@@ -36,8 +36,7 @@ int main(void) {
 #endif
 
     /* run test code*/
-     test_RAM(SEMC_sdram_struct.address);
-
+     testRAM();
 
     PRINTF("Hello World\r\n");
 

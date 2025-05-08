@@ -7,16 +7,28 @@
 
 #include "test_peripherals.h"
 
-void test_RAM(uint32_t baseAddress){
+#define RAMAddress 0x80000000
+//#define flashAddress
+
+
+void testRAM(void){
+	testMemory(RAMAddress, "SDRAM");
+}
+
+//void testFlash(void){
+//	test_memory();
+//}
+
+void testMemory(uint32_t baseAddress, char* memName){
 
 	volatile uint32_t *testAddr = (uint32_t *)baseAddress;
 	uint32_t testPattern = 0xA5A5A5A5;
 
 	*testAddr = testPattern;
 	if (*testAddr == testPattern) {
-		PRINTF("SDRAM test passed!\r\n");
+		PRINTF("%s test passed!\r\n", memName);
 	} else {
-		PRINTF("SDRAM test failed: wrote 0x%08X, read 0x%08X\r\n",
-			   testPattern, *testAddr);
+		PRINTF("%s test failed: wrote 0x%08X, read 0x%08X\r\n",
+			   memName, testPattern, *testAddr);
 	}
 };

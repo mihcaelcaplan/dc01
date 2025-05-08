@@ -11,8 +11,10 @@
 //#include "stdint.h"
 #include "fsl_debug_console.h"
 
-void test_RAM(uint32_t baseAddress);
-void test_Flash();
+void testRAM(void);
+void testFlash(void);
+
+void testMemory(uint32_t baseAddress, char* memName);
 
 
 
